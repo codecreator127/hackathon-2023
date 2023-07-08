@@ -7,7 +7,7 @@
   <title>Simple Bootstrap Template</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="template_style.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 
@@ -20,14 +20,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="calendar.html">Calendar</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+        <li class="nav-item active">
+          <a class="nav-link" href="friends.html">Friends</a>
         </li>
       </ul>
     </div>
@@ -36,23 +36,53 @@
 
   <section class="container content">
     <h2 class="p-2 heading"><strong>Friends List</strong></h2>
-    <div class="container">
-      <form class="form-inline">
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="searchBtn">
-              <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
-              </div>
-          </div>
-      </form>
-  </div>
-  <div class="friends-list">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-action">Friend 1</li>
-      <li class="list-group-item list-group-item-action">Friend 2</li>
-      <li class="list-group-item list-group-item-action">Friend 3</li>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#friends" role="tab" aria-controls="home" aria-selected="true">Friends</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#friendRequest" role="tab" aria-controls="contact" aria-selected="false">Request</a>
+      </li>
     </ul>
-  </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="friends" role="tabpanel" aria-labelledby="home-tab">
+        <div class="container">
+          <form class="form-inline">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="searchBtn">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
+                  </div>
+              </div>
+          </form>
+      </div>
+      <div class="friends-list">
+        <ul class="list-group">
+          <li class="list-group-item list-group-item-action">Friend 1</li>
+          <li class="list-group-item list-group-item-action">Friend 2</li>
+          <li class="list-group-item list-group-item-action">Friend 3</li>
+        </ul>
+      </div>
+      </div>
+      <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="profile-tab">
+        <p>You currently have no pending friend requests.</p>
+      </div>
+      <div class="tab-pane fade" id="friendRequest" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="container">
+          <form class="form-inline">
+              <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Send friend request" aria-label="Friend request" aria-describedby="friendReq">
+                  <div class="input-group-append">
+                      <button class="btn btn-outline-primary" type="button" id="friendReq">Send</button>
+                  </div>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
