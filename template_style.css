@@ -1,0 +1,25 @@
+
+body {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
+background-color: #487d49;
+
+}
+
+.content {
+flex: 1;
+}
+
+.navbar {
+background-color: #487d49; /* Dark green navbar background color */
+}
+
+.jumbotron {
+background-color: #c8e1c6; /* Light green jumbotron background color */
+color: #fff;
+}
+
+.footer {
+padding: 15px 0;
+}
