@@ -1,25 +1,28 @@
-
 body {
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-background-color: #487d49;
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #155724; /* Dark forest green body background color */
 }
 
 .content {
-flex: 1;
+    flex: 1;
 }
 
 .navbar {
-background-color: #487d49; /* Dark green navbar background color */
+    background-color: #155724; /* Dark forest green navbar background color */
 }
 
 .jumbotron {
-background-color: #c8e1c6; /* Light green jumbotron background color */
-color: #fff;
+    background-color: #A5D6A7; /* Light mint green jumbotron background color */
+    color: #022a02; /* Very dark green text color */
 }
 
 .footer {
-padding: 15px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #81C784; /* Medium sea green footer background color */
+    color: #001B00; /* Very dark green text color */
+    padding: 20px;
 }
