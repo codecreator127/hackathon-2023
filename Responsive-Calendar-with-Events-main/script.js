@@ -158,11 +158,6 @@ function addListner() {
 			} else {
 				const targetIndex = availableDays.indexOf(activeDay);
 				availableDays.splice(targetIndex, 1);
-				// days.forEach((day) => {
-				// 	if (Number(day.textContent) == activeDay) {
-				// 		day.classList.remove("active");
-				// 	}
-				// });
 			}
 
 			console.log("this is availableDays", availableDays);
@@ -182,9 +177,16 @@ function addListner() {
 					days.forEach((day) => {
 						if (
 							!day.classList.contains("prev-date") &&
-							day.innerHTML === e.target.innerHTML
+							day.innerHTML === e.target.innerHTML &&
+							!day.classList.contains("active")
 						) {
 							day.classList.add("active");
+						} else if (
+							!day.classList.contains("prev-date") &&
+							day.innerHTML === e.target.innerHTML &&
+							day.classList.contains("active")
+						) {
+							day.classList.remove("active");
 						}
 					});
 				}, 100);
@@ -196,14 +198,25 @@ function addListner() {
 					days.forEach((day) => {
 						if (
 							!day.classList.contains("next-date") &&
-							day.innerHTML === e.target.innerHTML
+							day.innerHTML === e.target.innerHTML &&
+							!day.classList.contains("active")
 						) {
 							day.classList.add("active");
+						} else if (
+							!day.classList.contains("next-date") &&
+							day.innerHTML === e.target.innerHTML &&
+							day.classList.contains("active")
+						) {
+							day.classList.remove("active");
 						}
 					});
 				}, 100);
 			} else {
-				e.target.classList.add("active");
+				if (!e.target.classList.contains("active")) {
+					e.target.classList.add("active");
+				} else {
+					e.target.classList.remove("active");
+				}
 			}
 		});
 	});
