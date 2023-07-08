@@ -505,3 +505,22 @@ function convertTime(time) {
 	time = timeHour + ":" + timeMin + " " + timeFormat;
 	return time;
 }
+
+
+function toggleDropdown() {
+	var dropdownContent = document.getElementById("dropdownContent");
+	dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+}
+
+function updateSelection(checkbox) {
+	var dropdownButton = document.getElementById("dropdownButton");
+	var selectedOptions = document.querySelectorAll("#dropdownContent input:checked");
+	var selectedText = "";
+
+	for (var i = 0; i < selectedOptions.length; i++) {
+		selectedText += selectedOptions[i].parentNode.textContent.trim() + ", ";
+	}
+
+	selectedText = selectedText.slice(0, -2); // Remove the trailing comma and space
+	dropdownButton.textContent = selectedText || "Select Options";
+}

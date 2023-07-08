@@ -79,6 +79,16 @@
                 class="event-time-to"
               />
             </div>
+            <div class="dropdown">
+              <button onclick="toggleDropdown()" id="dropdownButton">Select Options</button>
+              <div id="dropdownContent" class="dropdown-content">
+                  <label><input type="checkbox" value="option1" onchange="updateSelection(this)">Option 1</label><br>
+                  <label><input type="checkbox" value="option2" onchange="updateSelection(this)">Option 2</label><br>
+                  <label><input type="checkbox" value="option3" onchange="updateSelection(this)">Option 3</label><br>
+                  <label><input type="checkbox" value="option4" onchange="updateSelection(this)">Option 4</label><br>
+
+                  
+              </div>
           </div>
           <div class="add-event-footer">
             <button class="add-event-btn">Add Event</button>
