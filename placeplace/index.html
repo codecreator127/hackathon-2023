@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8">
+    <title>Location Widget</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
 <body>
+<div class="location-widget">
+  <h1>Find Local Places</h1>
 
-<h1>Find Local Places</h1>
+  <form id="addressForm">
+    <label for="address">Enter your address:</label>
+    <input type="text" id="address" name="address" autocomplete="on">
+  
+    <label for="filter">Select a filter:</label>
+    <select id="filter" name="filter">
+      <option value="">All</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="cafe">Cafe</option>
+      <option value="gym">Gym</option>
+      <option value="park">Park</option>
+      <!-- Add more options for other place types -->
+    </select>
+  
+    <input type="submit" value="Search">
+  </form>
+  
+  <div id="results"></div>
+</div>
 
-<form id="addressForm">
-  <label for="address">Enter your address:</label><br>
-  <input type="text" id="address" name="address"><br>
-
-  <label for="filter">Select a filter:</label>
-  <select id="filter" name="filter">
-    <option value="">All</option>
-    <option value="restaurant">Restaurant</option>
-    <option value="cafe">Cafe</option>
-    <option value="gym">Gym</option>
-    <option value="park">Park</option>
-    <!-- Add more options for other place types -->
-  </select>
-
-  <input type="submit" value="Submit">
-</form>
-
-<div id="results"></div>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfxcu3MVidDCTccD21FRLmJhZg29nMZNI&libraries=places"></script>
 <script>
 document.getElementById('addressForm').addEventListener('submit', function(event) {
   event.preventDefault(); // prevent the form from submitting normally
@@ -68,6 +75,9 @@ document.getElementById('addressForm').addEventListener('submit', function(event
       console.error('Error:', error);
     });
 });
+
+// Initialize autocomplete for the address input
+var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
 </script>
 
 </body>
