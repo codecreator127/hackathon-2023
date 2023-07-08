@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
     <a class="navbar-brand" href="#">Your Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,9 +43,24 @@
       sem.</p>
   </section>
 
-  <footer class="footer bg-light text-center py-3">
-    <p>&copy; 2023 (Your Website). All rights reserved.</p>
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 p-0 text-center">
+          <p class="footer-text text-md-left">&copy; 2023 (name). All rights reserved.</p>
+        </div>
+        <div class="col-md-7 p-0 text-center">
+          <ul class="list-inline text-md-right m-0">
+            <li class="list-inline-item"><a href="contact.html" class="text-white">Contact</a></li>
+            <li class="list-inline-item"><a href="about.html" class="text-white">About Us</a></li>
+            <li class="list-inline-item"><a href="privacy.html" class="text-white">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="terms.html" class="text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </footer>
+
 
   <!-- Bootstrap JS and jQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
