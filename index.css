@@ -7,7 +7,8 @@ body {
 
 .heading {
     margin: auto;
-    width: 30vh;
+    text-align: center;
+    padding-top: 20px;
 }
 
 .content {
@@ -16,13 +17,6 @@ body {
 
 .navbar {
     background-color: #155724; /* Dark forest green navbar background color */
-}
-
-.friends-list {
-    margin: 10px;
-    padding: 10px;
-    height: 70vh;
-    overflow-y: scroll;
 }
 
 .jumbotron {
@@ -37,4 +31,42 @@ body {
     background-color: #81C784; /* Medium sea green footer background color */
     color: #001B00; /* Very dark green text color */
     padding: 20px;
+}
+
+/* Index Page */
+
+.calendar {
+    background-color: #FFFFFF;
+    margin: 20px;
+    height: 45vh;
+}
+
+.upcoming-events {
+    background-color: white;
+    margin: 20px;
+    height: 10vh;
+}
+
+.invites {
+    width: 200px;
+    margin: auto 0 0 auto;
+}
+
+.friend-item {
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.profile-pic {
+    width: 50px;
+}
+
+/* Friends Page */
+
+.friends-list {
+    margin: 10px;
+    padding: 10px;
+    height: 70vh;
+    overflow-y: scroll;
 }

@@ -4,11 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Bootstrap Template</title>
+  <title>Home</title>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="template_style.css">
-
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -24,7 +23,7 @@
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">About</a>
+          <a class="nav-link" href="#">Friends</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
@@ -35,24 +34,44 @@
 
 
   <section class="container content">
-    <h2 class="p-2 heading"><strong>Friends List</strong></h2>
-    <div class="container">
-      <form class="form-inline">
-          <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="searchBtn">
-              <div class="input-group-append">
-                  <button class="btn btn-outline-primary" type="button" id="searchBtn">Search</button>
-              </div>
+    <h2 class="font-weight-bold heading">Home</h2>
+    <div class="calendar">
+      <!-- calendar block -->
+    </div>
+    <div class="upcoming-events">
+      <!-- list of upcoming events (maybe icons) -->
+    </div>
+    <button type="button" class="btn btn-primary float-right mr-3" data-toggle="modal" data-target="#friendsInvite">Friends</button>
+    <div class="modal fade" id="friendsInvite" tabindex="-1" aria-labelledby="friendsInviteLabel" aria-hidden="true">
+      <div class="modal-dialog invites modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Friends</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-      </form>
-  </div>
-  <div class="friends-list">
-    <ul class="list-group">
-      <li class="list-group-item list-group-item-action">Friend 1</li>
-      <li class="list-group-item list-group-item-action">Friend 2</li>
-      <li class="list-group-item list-group-item-action">Friend 3</li>
-    </ul>
-  </div>
+          <div class="modal-body">
+            <div class="input-group mb-3 friend-item">
+              <img class="profile-pic" src="img/profile_pic.png">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+              </div>
+            </div>
+            <div class="input-group mb-3 friend-item">
+              <img class="profile-pic" src="img/profile_pic.png">
+              <div class="input-group-prepend">
+                <div class="input-group-text">
+                  <input type="checkbox" aria-label="Checkbox for following text input">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer class="footer">
