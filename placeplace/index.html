@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Find Local Places</h1>
+
+<form id="addressForm">
+  <label for="address">Enter your address:</label><br>
+  <input type="text" id="address" name="address"><br>
+
+  <label for="filter">Select a filter:</label>
+  <select id="filter" name="filter">
+    <option value="">All</option>
+    <option value="restaurant">Restaurant</option>
+    <option value="cafe">Cafe</option>
+    <option value="gym">Gym</option>
+    <option value="park">Park</option>
+    <!-- Add more options for other place types -->
+  </select>
+
+  <input type="submit" value="Submit">
+</form>
+
+<div id="results"></div>
+
+<script>
+document.getElementById('addressForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // prevent the form from submitting normally
+
+  var address = document.getElementById('address').value;
+  var filter = document.getElementById('filter').value;
+
+  // Use the entered address and filter to fetch data from your server
+  fetch('http://localhost:3000/places', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ address: address, filter: filter }),
+  })
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error('Server request failed with status ' + response.status);
+      }
+    })
+    .then(function(data) {
+      console.log(data);  // Let's see what data is returned from the server
+
+      // Extract and display places data
+      var resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      if (Array.isArray(data)) {  // Check if data is an array
+        data.forEach(function(place) {
+          var p = document.createElement('p');
+          p.textContent = place.name;
+          resultsDiv.appendChild(p);
+        });
+      } else if (data.error) {  // Check if there's an error message
+        var p = document.createElement('p');
+        p.textContent = data.error;
+        resultsDiv.appendChild(p);
+      }
+    })
+    .catch(function(error) {
+      console.error('Error:', error);
+    });
+});
+</script>
+
+</body>
+</html>
