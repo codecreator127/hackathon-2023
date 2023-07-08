@@ -160,7 +160,7 @@ function addListner() {
 				availableDays.splice(targetIndex, 1);
 			}
 
-			console.log("this is availableDays", availableDays);
+			// console.log("this is availableDays", availableDays);
 
 			//remove active
 			// days.forEach((day) => {
@@ -319,25 +319,25 @@ addEventTitle.addEventListener("input", (e) => {
 	addEventTitle.value = addEventTitle.value.slice(0, 60);
 });
 
-function defineProperty() {
-	var osccred = document.createElement("div");
-	osccred.innerHTML =
-		"A Project By <a href='https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ' target=_blank>Open Source Coding</a>";
-	osccred.style.position = "absolute";
-	osccred.style.bottom = "0";
-	osccred.style.right = "0";
-	osccred.style.fontSize = "10px";
-	osccred.style.color = "#ccc";
-	osccred.style.fontFamily = "sans-serif";
-	osccred.style.padding = "5px";
-	osccred.style.background = "#fff";
-	osccred.style.borderTopLeftRadius = "5px";
-	osccred.style.borderBottomRightRadius = "5px";
-	osccred.style.boxShadow = "0 0 5px #ccc";
-	document.body.appendChild(osccred);
-}
+// function defineProperty() {
+// 	var osccred = document.createElement("div");
+// 	osccred.innerHTML =
+// 		"A Project By <a href='https://www.youtube.com/channel/UCiUtBDVaSmMGKxg1HYeK-BQ' target=_blank>Open Source Coding</a>";
+// 	osccred.style.position = "absolute";
+// 	osccred.style.bottom = "0";
+// 	osccred.style.right = "0";
+// 	osccred.style.fontSize = "10px";
+// 	osccred.style.color = "#ccc";
+// 	osccred.style.fontFamily = "sans-serif";
+// 	osccred.style.padding = "5px";
+// 	osccred.style.background = "#fff";
+// 	osccred.style.borderTopLeftRadius = "5px";
+// 	osccred.style.borderBottomRightRadius = "5px";
+// 	osccred.style.boxShadow = "0 0 5px #ccc";
+// 	document.body.appendChild(osccred);
+// }
 
-defineProperty();
+// defineProperty();
 
 //allow only time in eventtime from and to
 addEventFrom.addEventListener("input", (e) => {
@@ -505,3 +505,55 @@ function convertTime(time) {
 	time = timeHour + ":" + timeMin + " " + timeFormat;
 	return time;
 }
+
+//// Date Picker
+$(function () {
+	var bindDatePicker = function () {
+		$(".date")
+			.datetimepicker({
+				format: "YYYY-MM-DD",
+				icons: {
+					time: "fa fa-clock-o",
+					date: "fa fa-calendar",
+					up: "fa fa-arrow-up",
+					down: "fa fa-arrow-down",
+				},
+			})
+			.find("input:first")
+			.on("blur", function () {
+				// check if the date is correct. We can accept dd-mm-yyyy and yyyy-mm-dd.
+				// update the format if it's yyyy-mm-dd
+				var date = parseDate($(this).val());
+
+				if (!isValidDate(date)) {
+					//create date based on momentjs (we have that)
+					date = moment().format("YYYY-MM-DD");
+				}
+
+				$(this).val(date);
+			});
+	};
+
+	var isValidDate = function (value, format) {
+		format = format || false;
+		// lets parse the date to the best of our knowledge
+		if (format) {
+			value = parseDate(value);
+		}
+
+		var timestamp = Date.parse(value);
+
+		return isNaN(timestamp) == false;
+	};
+
+	var parseDate = function (value) {
+		var m = value.match(/^(\d{1,2})(\/|-)?(\d{1,2})(\/|-)?(\d{4})$/);
+		if (m)
+			value =
+				m[5] + "-" + ("00" + m[3]).slice(-2) + "-" + ("00" + m[1]).slice(-2);
+
+		return value;
+	};
+
+	bindDatePicker();
+});
