@@ -1,0 +1,17 @@
+.navbar-custom {
+  background-color: white;
+  color: #333;
+}
+
+.navbar-custom .navbar-brand {
+  color: #333;
+  margin: 0 auto; /* Centers the navbar brand */
+}
+
+.navbar-custom .nav-link {
+  color: #333;
+}
+
+.navbar-custom .navbar-nav .nav-link {
+  color: black; /* Changes the dropdown menu color to black */
+}
