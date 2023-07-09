@@ -1,17 +1,8 @@
-.navbar-custom {
+nav {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 5px 5px 8px #18181811;
+  padding: 20px;
   background-color: white;
-  color: #333;
-}
-
-.navbar-custom .navbar-brand {
-  color: #333;
-  margin: 0 auto; /* Centers the navbar brand */
-}
-
-.navbar-custom .nav-link {
-  color: #333;
-}
-
-.navbar-custom .navbar-nav .nav-link {
-  color: black; /* Changes the dropdown menu color to black */
+  color: black;
 }
