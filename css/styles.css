@@ -2,6 +2,7 @@
 body {
     height: 100%;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -28,11 +29,10 @@ nav {
     padding: 20px;
 }
 
+/* Calendar */
+
 
 /* Dashboard Page */
-
-
-
 
 
 /* Calendar Page */
