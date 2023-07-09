@@ -118,10 +118,9 @@ function initCalendar(isMulti) {
 		days += `<div class="day next-date">${j}</div>`;
 	}
 	daysContainer.innerHTML = days;
-	if(isMulti) {
+	if (isMulti) {
 		addListner();
-	}
-	else {
+	} else {
 		addSingleListner(); // can only choose one date at a time
 	}
 }
@@ -151,6 +150,7 @@ next.addEventListener("click", nextMonth);
 initCalendar(false);
 
 const availableDays = [];
+let sendAvailableDays = [];
 
 //function to add active on day
 function addListner() {
@@ -185,6 +185,21 @@ function addListner() {
 			}
 
 			console.log("this is availableDays", availableDays);
+			const tempArr = [];
+
+			availableDays.forEach(function (day) {
+				const date = day.getDate();
+				const month = day.getMonth() + 1;
+				const year = day.getFullYear();
+				tempArr.push({
+					day: date,
+					month: month,
+					year: year,
+				});
+			});
+
+			sendAvailableDays = tempArr;
+
 			//remove active
 			// days.forEach((day) => {
 			// 	day.classList.remove("active");
@@ -248,51 +263,50 @@ function addListner() {
 function addSingleListner() {
 	const days = document.querySelectorAll(".day");
 	days.forEach((day) => {
-	  day.addEventListener("click", (e) => {
-		getActiveDay(e.target.innerHTML);
-		updateEvents(Number(e.target.innerHTML));
-		activeDay = Number(e.target.innerHTML);
-		//remove active
-		days.forEach((day) => {
-		  day.classList.remove("active");
+		day.addEventListener("click", (e) => {
+			getActiveDay(e.target.innerHTML);
+			updateEvents(Number(e.target.innerHTML));
+			activeDay = Number(e.target.innerHTML);
+			//remove active
+			days.forEach((day) => {
+				day.classList.remove("active");
+			});
+			//if clicked prev-date or next-date switch to that month
+			if (e.target.classList.contains("prev-date")) {
+				prevMonth();
+				//add active to clicked day afte month is change
+				setTimeout(() => {
+					//add active where no prev-date or next-date
+					const days = document.querySelectorAll(".day");
+					days.forEach((day) => {
+						if (
+							!day.classList.contains("prev-date") &&
+							day.innerHTML === e.target.innerHTML
+						) {
+							day.classList.add("active");
+						}
+					});
+				}, 100);
+			} else if (e.target.classList.contains("next-date")) {
+				nextMonth();
+				//add active to clicked day afte month is changed
+				setTimeout(() => {
+					const days = document.querySelectorAll(".day");
+					days.forEach((day) => {
+						if (
+							!day.classList.contains("next-date") &&
+							day.innerHTML === e.target.innerHTML
+						) {
+							day.classList.add("active");
+						}
+					});
+				}, 100);
+			} else {
+				e.target.classList.add("active");
+			}
 		});
-		//if clicked prev-date or next-date switch to that month
-		if (e.target.classList.contains("prev-date")) {
-		  prevMonth();
-		  //add active to clicked day afte month is change
-		  setTimeout(() => {
-			//add active where no prev-date or next-date
-			const days = document.querySelectorAll(".day");
-			days.forEach((day) => {
-			  if (
-				!day.classList.contains("prev-date") &&
-				day.innerHTML === e.target.innerHTML
-			  ) {
-				day.classList.add("active");
-			  }
-			});
-		  }, 100);
-		} else if (e.target.classList.contains("next-date")) {
-		  nextMonth();
-		  //add active to clicked day afte month is changed
-		  setTimeout(() => {
-			const days = document.querySelectorAll(".day");
-			days.forEach((day) => {
-			  if (
-				!day.classList.contains("next-date") &&
-				day.innerHTML === e.target.innerHTML
-			  ) {
-				day.classList.add("active");
-			  }
-			});
-		  }, 100);
-		} else {
-		  e.target.classList.add("active");
-		}
-	  });
 	});
-  }
-
+}
 
 todayBtn.addEventListener("click", () => {
 	today = new Date();
@@ -436,98 +450,109 @@ addEventTo.addEventListener("input", (e) => {
 
 //function to add event to eventsArr
 addEventSubmit.addEventListener("click", () => {
-	const eventTitle = addEventTitle.value;
-	const eventTimeFrom = addEventFrom.value;
-	const eventTimeTo = addEventTo.value;
-	if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
-		alert("Please fill all the fields");
-		return;
-	}
+	var toggle = document.querySelector(".toggle");
 
-	//check correct time format 24 hour
-	const timeFromArr = eventTimeFrom.split(":");
-	const timeToArr = eventTimeTo.split(":");
-	if (
-		timeFromArr.length !== 2 ||
-		timeToArr.length !== 2 ||
-		timeFromArr[0] > 23 ||
-		timeFromArr[1] > 59 ||
-		timeToArr[0] > 23 ||
-		timeToArr[1] > 59
-	) {
-		alert("Invalid Time Format");
-		return;
-	}
+	toggle.classList.toggle("on");
 
-	const timeFrom = convertTime(eventTimeFrom);
-	const timeTo = convertTime(eventTimeTo);
+	if (!toggle.classList.contains("on")) {
+		sendAvailableDates(sendAvailableDays);
+	} else {
+		const eventTitle = addEventTitle.value;
+		const eventTimeFrom = addEventFrom.value;
+		const eventTimeTo = addEventTo.value;
 
-	//check if event is already added
-	let eventExist = false;
-	eventsArr.forEach((event) => {
+		if (eventTitle === "" || eventTimeFrom === "" || eventTimeTo === "") {
+			alert("Please fill all the fields");
+			return;
+		}
+
+		//check correct time format 24 hour
+		const timeFromArr = eventTimeFrom.split(":");
+		const timeToArr = eventTimeTo.split(":");
 		if (
-			event.day === activeDay &&
-			event.month === month + 1 &&
-			event.year === year
+			timeFromArr.length !== 2 ||
+			timeToArr.length !== 2 ||
+			timeFromArr[0] > 23 ||
+			timeFromArr[1] > 59 ||
+			timeToArr[0] > 23 ||
+			timeToArr[1] > 59
 		) {
-			event.events.forEach((event) => {
-				if (event.title === eventTitle) {
-					eventExist = true;
+			alert("Invalid Time Format");
+			return;
+		}
+
+		const timeFrom = convertTime(eventTimeFrom);
+		const timeTo = convertTime(eventTimeTo);
+
+		//check if event is already added
+		let eventExist = false;
+		eventsArr.forEach((event) => {
+			if (
+				event.day === activeDay &&
+				event.month === month + 1 &&
+				event.year === year
+			) {
+				event.events.forEach((event) => {
+					if (event.title === eventTitle) {
+						eventExist = true;
+					}
+				});
+			}
+		});
+		if (eventExist) {
+			alert("Event already added");
+			return;
+		}
+		const newEvent = {
+			title: eventTitle,
+			time: timeFrom + " - " + timeTo,
+		};
+		console.log(newEvent);
+		console.log(activeDay);
+		let eventAdded = false;
+		if (eventsArr.length > 0) {
+			eventsArr.forEach((item) => {
+				if (
+					item.day === activeDay &&
+					item.month === month + 1 &&
+					item.year === year
+				) {
+					item.events.push(newEvent);
+					eventAdded = true;
 				}
 			});
 		}
-	});
-	if (eventExist) {
-		alert("Event already added");
-		return;
-	}
-	const newEvent = {
-		title: eventTitle,
-		time: timeFrom + " - " + timeTo,
-	};
-	console.log(newEvent);
-	console.log(activeDay);
-	let eventAdded = false;
-	if (eventsArr.length > 0) {
-		eventsArr.forEach((item) => {
-			if (
-				item.day === activeDay &&
-				item.month === month + 1 &&
-				item.year === year
-			) {
-				item.events.push(newEvent);
-				eventAdded = true;
-			}
-		});
-	}
 
-	if (!eventAdded) {
-		eventsArr.push({
-			day: activeDay,
-			month: month + 1,
-			year: year,
-			events: [newEvent],
-		});
-	}
+		if (!eventAdded) {
+			eventsArr.push({
+				day: activeDay,
+				month: month + 1,
+				year: year,
+				events: [newEvent],
+			});
+		}
 
-	console.log(eventsArr);
-	addEventWrapper.classList.remove("active");
-	addEventTitle.value = "";
-	addEventFrom.value = "";
-	addEventTo.value = "";
-	updateEvents(activeDay);
-	createNewEvent(
-		eventTitle,
-		activeDay,
-		month + 1,
-		year,
-		eventTimeFrom,
-		eventTimeTo
-	);
-	//select active day and add event class if not added
-	const activeDayEl = document.querySelector(".day.active");
-	if (!activeDayEl.classList.contains("event")) {
-		activeDayEl.classList.add("event");
+		console.log(eventsArr);
+		addEventWrapper.classList.remove("active");
+		addEventTitle.value = "";
+		addEventFrom.value = "";
+		addEventTo.value = "";
+		updateEvents(activeDay);
+
+		createNewEvent(
+			eventTitle,
+			activeDay,
+			month + 1,
+			year,
+			eventTimeFrom,
+			eventTimeTo
+		);
+
+		//select active day and add event class if not added
+		const activeDayEl = document.querySelector(".day.active");
+		if (!activeDayEl.classList.contains("event")) {
+			activeDayEl.classList.add("event");
+		}
 	}
 });
 
@@ -678,7 +703,6 @@ auth.onAuthStateChanged(function (user) {
 	}
 });
 
-
 function toggleDropdown() {
 	var dropdownContent = document.getElementById("dropdownContent");
 	dropdownContent.style.display =
@@ -787,17 +811,39 @@ function getUserInfo(userId) {
 
 // code for selectDates toggle
 function toggleSwitch() {
-	var toggle = document.querySelector('.toggle');
+	var toggle = document.querySelector(".toggle");
 
-
-	toggle.classList.toggle('on');
-	if (toggle.classList.contains('on')) {
+	toggle.classList.toggle("on");
+	if (toggle.classList.contains("on")) {
 		initCalendar(true);
 	} else {
 		initCalendar(false);
 	}
 
+	var text = document.querySelector(".text");
+	text.textContent = toggle.classList.contains("on") ? "ON" : "OFF";
+}
 
-	var text = document.querySelector('.text');
-	text.textContent = toggle.classList.contains('on') ? 'ON' : 'OFF';
+// Send available dates of user to database
+function sendAvailableDates(arrayAvailableDates) {
+	console.log("sendAvailbleDates called");
+	const currentUser = auth.currentUser;
+	const currentUserRef = db.collection("all_users").doc(currentUser.uid);
+
+	// Add requested user to the currently logged-in user's requests collection
+	arrayAvailableDates.forEach(function (event) {
+		currentUserRef
+			.collection("availables")
+			.doc(currentUser.uid)
+			.set(event)
+			.then(function () {
+				console.log("Available dates added to user's availables collection");
+			})
+			.catch(function (error) {
+				console.error(
+					"Error adding available dates to pending collection: ",
+					error
+				);
+			});
+	});
 }
