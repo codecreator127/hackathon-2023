@@ -3,7 +3,6 @@ html, body {
     margin: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
     background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
 }
@@ -12,9 +11,9 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 960px; /* Adjust this as necessary to prevent the form from being too wide on large screens */
-    padding: 20px;
+    padding: 30px;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container.content {
@@ -55,4 +54,26 @@ body {
     background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
 }
 
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10%;
+ }
+
+
+
+.custom-button {
+    position: relative;
+    color: black;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .custom-button:hover {
+    background-color: #04e49c;
+    color: white;
+    
+
+  }
 

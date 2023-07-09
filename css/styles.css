@@ -1,7 +1,8 @@
-/* General */
+/* General */   
 body {
     height: 100%;
     margin: 0;
+    font-family: 'Poppins', sans-serif;
 }
 
 nav {
@@ -16,6 +17,7 @@ nav {
 .heading {
     margin: auto;
     width: 30vw;
+    text-align: center;
 }
 
 
@@ -28,11 +30,10 @@ nav {
     padding: 20px;
 }
 
+/* Calendar */
+
 
 /* Dashboard Page */
-
-
-
 
 
 /* Calendar Page */
