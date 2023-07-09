@@ -1,8 +1,18 @@
 /* General */   
+:root {
+  --primary-clr: #3DA35D;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
     height: 100%;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif; 
 }
 
 nav {
@@ -12,6 +22,7 @@ nav {
     padding: 20px;
     background-color: white;
     color: black;
+    margin-bottom: 10px;
 }
 
 .heading {
@@ -32,15 +43,6 @@ nav {
 }
 
 /* Calendar */
-:root {
-    --primary-clr: #b38add;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-  }
   /* nice scroll bar */
   ::-webkit-scrollbar {
     width: 5px;
@@ -592,12 +594,62 @@ nav {
   }
 
 /* Dashboard Page */
+.calendar-container-index {
+  position: relative;
+  width: 1200px;
+  min-height: 850px;
+  margin: 0 auto;
+  padding: 5px;
+  color: black;
+  display: flex;
 
+  border-radius: 10px;
+  background-color: white;
+}
 
-/* Calendar Page */
+.weather {
+  border: solid 1px;
+}
 
+.event{
+  margin-top: 15%;
+  margin-left: -20%;
+}
 
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
 
+  .head {
+    display: inline-block;
+    margin-right: 40px;
+  }
+}
+
+.location-widget,
+.event-widget,
+.weather-widget {
+  border: solid 2px;
+  border-radius: 10px;
+  padding: 10px;
+  width: 50vw;
+  height: 300px;
+  background-color: rgba(132, 250, 176, 0.5);
+}
+
+.location-widget h1 {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+#results {
+  margin: 5px;
+  margin-top: 10px;
+  border-top: solid;
+  overflow-y: scroll;
+  max-height: 70%;
+}
 
 /* Friends Page */
 .friends-list {
