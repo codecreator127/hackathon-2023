@@ -645,7 +645,7 @@ function createNewEvent(
 
 	// Add requested user to the currently logged-in user's requests collection
 	currentUserRef
-		.collection("requests")
+		.collection("events")
 		.doc(currentUser.uid)
 		.set({
 			name: eventTitle,
