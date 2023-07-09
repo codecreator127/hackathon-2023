@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Bootstrap Template</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="friends.css">
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">Your Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendar.html">Calendar</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="friends.html">Friends</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="container content">
+    <h2 class="p-2 heading"><strong>Friends List</strong></h2>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#friends" role="tab" aria-controls="home" aria-selected="true">Friends</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#pending" role="tab" aria-controls="profile" aria-selected="false">Pending</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="requested-tab" data-toggle="tab" href="#requested" role="tab" aria-controls="requested" aria-selected="false">Requested</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#friendRequest" role="tab" aria-controls="contact" aria-selected="false">Request</a>
+      </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="friends" role="tabpanel" aria-labelledby="home-tab">
+        <div class="friends-list">
+          <ul class="list-group" id="friendsList">
+            <!-- Friends will be dynamically added here -->
+          </ul>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="profile-tab">
+        <ul class="list-group" id="pendingList">
+          <!-- Pending users will be dynamically added here -->
+        </ul>
+      </div>
+      <div class="tab-pane fade" id="requested" role="tabpanel" aria-labelledby="requested-tab">
+        <ul class="list-group" id="requestList">
+          <!-- requested users will be dynamically added here -->
+        </ul>
+      </div>
+      
+      <div class="tab-pane fade" id="friendRequest" role="tabpanel" aria-labelledby="contact-tab">
+        <div class="container">
+          <form class="form-inline">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search user" aria-label="Search user" aria-describedby="friendReq" id="searchUserInput">
+              <div class="input-group-append">
+                <button class="btn btn-outline-primary" type="button" id="searchUserBtn">Search</button>
+              </div>
+            </div>
+          </form>
+          <ul class="list-group mt-4" id="searchResultsList">
+            <!-- Search results will be dynamically added here -->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 p-0 text-center">
+          <p class="footer-text text-md-left">&copy; 2023 (name). All rights reserved.</p>
+        </div>
+        <div class="col-md-7 p-0 text-center">
+          <ul class="list-inline text-md-right m-0">
+            <li class="list-inline-item"><a href="contact.html" class="text-white">Contact</a></li>
+            <li class="list-inline-item"><a href="about.html" class="text-white">About Us</a></li>
+            <li class="list-inline-item"><a href="privacy.html" class="text-white">Privacy Policy</a></li>
+            <li class="list-inline-item"><a href="terms.html" class="text-white">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+  <!-- Include Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <!-- Include Firebase Firestore -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+  <!-- Your Firebase configuration script -->
+  <script src="friends_firebase.js"></script>
+
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

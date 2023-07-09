@@ -31,7 +31,7 @@ const firebaseConfig = {
         var user = userCredential.user;
         console.log("User logged in:", user);
         // Redirect or show success message to the user
-        window.location.href = "profile.html";
+        window.location.href = "friends.html";
       })
       .catch(function (error) {
         console.error("Error logging in: ", error);
