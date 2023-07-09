@@ -5,6 +5,15 @@ body {
     background-color: #ace9ba; /* Dark forest green body background color */
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 8px #18181811;
+    padding: 20px;
+    background-color: white;
+    color: black;
+  }
+
 .heading {
     margin: auto;
     width: 30vh;

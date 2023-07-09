@@ -4,6 +4,15 @@ body {
     margin: 0;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 8px #18181811;
+    padding: 20px;
+    background-color: white;
+    color: black;
+}
+
 .heading {
     margin: auto;
     width: 30vw;
