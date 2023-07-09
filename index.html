@@ -1,128 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Stay organized with our user-friendly Calendar featuring events, reminders, and a customizable interface. Built with HTML, CSS, and JavaScript. Start scheduling today!"
-    />
-    <meta
-      name="keywords"
-      content="calendar, events, reminders, javascript, html, css, open source coding"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="css/calendar.css" />
-    <title>Calendar with Events</title>
-  </head>
-  <body>
-    <div class="container">
-      <div class="left">
-        <div class="calendar">
-          <div class="month">
-            <i class="fas fa-angle-left prev"></i>
-            <div class="date">december 2015</div>
-            <i class="fas fa-angle-right next"></i>
-          </div>
-          <div class="weekdays">
-            <div>Sun</div>
-            <div>Mon</div>
-            <div>Tue</div>
-            <div>Wed</div>
-            <div>Thu</div>
-            <div>Fri</div>
-            <div>Sat</div>
-          </div>
-          <div class="days"></div>
-          <div class="goto-today">
-            <div class="goto">
-              <input type="text" placeholder="mm/yyyy" class="date-input" />
-              <button class="goto-btn">Go</button>
-            </div>
-            <button class="today-btn">Today</button>
-          </div>
-        </div>
-      </div>
-      <div class="right">
-        <div class="today-date">
-          <div class="event-day">wed</div>
-          <div class="event-date">12th december 2022</div>
-        </div>
-        <div class="events"></div>
-        <div class="add-event-wrapper">
-          <div class="add-event-header">
-            <div class="title">Add Event</div>
-            <i class="fas fa-times close"></i>
-          </div>
-          <div class="add-event-body">
-            <div class="add-event-input">
-              <input type="text" placeholder="Event Name" class="event-name" />
-            </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time From"
-                class="event-time-from"
-              />
-            </div>
-            <div class="add-event-input">
-              <input
-                type="text"
-                placeholder="Event Time To"
-                class="event-time-to"
-              />
-            </div>
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/styles.css"> 
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body onload="checkWeather('Auckland')">
 
-						<!-- Friends List Dropdown -->
-            <div class="dropdown">
-              <button onclick="toggleDropdown()" id="dropdownButton">Invite Friends</button>
-              <div id="dropdownContent" class="dropdown-content"> 
-              </div>
-          </div>
-          <div class="add-event-input">
-            <div class="toggle" onclick="toggleSwitch()">
-              <div class="slider"></div>
-              <div class="text">OFF</div>
-            </div>
-          </div> 
+  <script src="https://kit.fontawesome.com/7552b865b0.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome -->
 
-          <div class="add-event-footer">
-            <button class="add-event-btn">Add Event</button>
-          </div>
-        </div>
-      </div>
-      <button class="add-event">
-        <i class="fas fa-plus"></i>
-      </button>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito&display=swap">
+  <!-- Nunito Font -->
+
+  
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand header-element" href="#">
+      <img src="img/logoclear.png" alt="Logo" height="30">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="calendar.html">Calendar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="friends.html">Friends</a>
+        </li>
+      </ul>
     </div>
+  </nav>
+<div class="container">
+<div class="row">
+  <div class="calendar">
+  <div class="col-sm-8">
+    <div id="calendar" class="calendar">
+    <img src="https://c.tadst.com/gfx/1200x675/calendar-2023-printable.png?1" width = 100% height = 70%>
+    </div>
+  </div>
+</div>
+  <div class="col-sm-4">
+      <h3>Weather</h3>
+      <img src="images/weatherAPI.png" style = "display: inline-block">
 
-    <!-- Include Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-		<script src="js/script.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-			integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-			crossorigin="anonymous"
-		></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-			integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-			crossorigin="anonymous"
-		></script>
+      <!--weather stuff i added here-->
+      <div  class="search">
+        <input type="text" placeholder ="Enter city name" spellcheck="false">
+        <button>Go</button>
+    </div>
+    <div>
+        <p class="city">Auckland</p>
+        <p class="country">NZ</p>
+        <p>Today</p>
+        <p class="temp" id="temp0">20°C</p>
+        <p class="weather" id="weather0">Rain</p>
+    </div>
+      
 
-	</body>
+  <div class="col-sm-4">
+    <div class="event">
+      <h3> Events </h3>
+      <ul class="list-group" id="eventList">
+        <!-- events will be dynamically added here -->
+      </ul>
+  </div>
+  </div>
+  </div>
+</div>
+<hr>
+
+<!-- all local places api-->
+
+<div class = "localplaces">
+  <h1>Find Local Places</h1>
+  
+  <form id="addressForm" autocomplete="off">
+    <label for="address">Enter your address:</labe  l><br>
+    <input type="text" id="address" name="address"><br>
+  
+    <label for="filter">Select a filter:</label>
+    <select id="filter" name="filter">
+      <option value="">All</option>
+      <option value="restaurant">Restaurant</option>
+      <option value="cafe">Cafe</option>
+      <option value="gym">Gym</option>
+      <option value="park">Park</option>
+      <!-- Add more options for other place types -->
+    </select>
+  
+    <label for="radius">Radius (in meters):</label>
+    <input type="number" id="radius" name="radius" min="0" value="1000"><br>
+  
+    <input type="submit" value="Submit">
+  </form>
+  
+  <div id="results"></div>
+  </div>
+
+
+</div>
+
+
+  <!-- Include Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <!-- Your Firebase configuration script -->
+  <script src="js/dashboard_firebase.js"></script>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfxcu3MVidDCTccD21FRLmJhZg29nMZNI&libraries=places"></script>
+  <script>
+  document.getElementById('addressForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent the form from submitting normally
+  
+    var address = document.getElementById('address').value;
+    var filter = document.getElementById('filter').value;
+  
+    // Use the entered address and filter to fetch data from your server
+    fetch('http://localhost:3000/places', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ address: address, filter: filter }),
+    })
+      .then(function(response) {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Server request failed with status ' + response.status);
+        }
+      })
+      .then(function(data) {
+        console.log(data);  // Let's see what data is returned from the server
+  
+        // Extract and display places data
+        var resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+  
+        if (Array.isArray(data)) {  // Check if data is an array
+          data.forEach(function(place) {
+            var p = document.createElement('p');
+            p.textContent = place.name;
+            resultsDiv.appendChild(p);
+          });
+        } else if (data.error) {  // Check if there's an error message
+          var p = document.createElement('p');
+          p.textContent = data.error;
+          resultsDiv.appendChild(p);
+        }
+      })
+      .catch(function(error) {
+        console.error('Error:', error);
+      });
+  });
+  
+  // Initialize autocomplete for the address input
+  var autocomplete = new google.maps.places.Autocomplete(document.getElementById('address'));
+  </script>
+  
+
+</body>
 </html>
