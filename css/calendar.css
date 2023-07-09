@@ -20,7 +20,7 @@
   border-radius: 50px;
 }
 
-body {
+.ßcalendar-widget {
   position: relative;
   min-height: 100vh;
   display: flex;
