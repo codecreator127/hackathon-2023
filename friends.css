@@ -1,0 +1,60 @@
+html{
+   font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #ace9ba; /* Dark forest green body background color */
+}
+
+.heading {
+    margin: auto;
+    width: 30vh;
+}
+
+.content {
+    flex: 1;
+}
+
+.navbar {
+    background-color: #155724; /* Dark forest green navbar background color */
+}
+
+.jumbotron {
+    background-color: #A5D6A7; /* Light mint green jumbotron background color */
+    color: #022a02; /* Very dark green text color */
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 5px 5px 8px #18181811;
+    padding: 20px;
+    background-color: white;
+    color: black;
+  }
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #81C784; /* Medium sea green footer background color */
+    color: #001B00; /* Very dark green text color */
+    padding: 20px;
+}
+
+/* Friends Page */
+
+.friends-list {
+    margin: 10px;
+    padding: 10px;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.tab-pane {
+    padding-top: 10px;
+}
