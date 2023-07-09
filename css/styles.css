@@ -1,0 +1,47 @@
+/* General */
+body {
+    height: 100%;
+    margin: 0;
+}
+
+.heading {
+    margin: auto;
+    width: 30vw;
+}
+
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #96E072;
+    color: #134611;
+    padding: 20px;
+}
+
+
+/* Dashboard Page */
+
+
+
+
+
+/* Calendar Page */
+
+
+
+
+/* Friends Page */
+.friends-list {
+    margin: 10px;
+    padding: 10px;
+    height: 70vh;
+    overflow-y: scroll;
+}
+
+.tab-pane {
+    padding-top: 10px;
+}
+
+
+/* Login + SignUp Page */
